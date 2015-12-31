@@ -12,16 +12,16 @@ class SubripFile extends File
         [\p{C}]{0,3}                            # BOM
         [\d]+                                   # Subtitle order.
         ((?:\r\n|\r|\n))                        # Line end.
-        [\d]{2}:[\d]{2}:[\d]{2},[\d]{3}         # Start time.
+        [\d]{2}:[\d]{2}:[\d]{2},[\d]{1,3}         # Start time.
         [ ]-->[ ]                               # Time delimiter.
-        [\d]{2}:[\d]{2}:[\d]{2},[\d]{3}         # End time.
+        [\d]{2}:[\d]{2}:[\d]{2},[\d]{1,3}         # End time.
         (?:\1[\S ]+)+                           # Subtitle text.
                        ### Other subtitles ###
         (?:
             \1\1(?<=\r\n|\r|\n)[\d]+\1
-            [\d]{2}:[\d]{2}:[\d]{2},[\d]{3}
+            [\d]{2}:[\d]{2}:[\d]{2},[\d]{1,3}
             [ ]-->[ ]
-            [\d]{2}:[\d]{2}:[\d]{2},[\d]{3}
+            [\d]{2}:[\d]{2}:[\d]{2},[\d]{1,3}
             (?:\1[\S ]+)+
         )*
         \1?
